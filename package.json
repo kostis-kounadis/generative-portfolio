@@ -9,7 +9,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "astro build && cd dist && git init && git remote add origin git@github.com:kostis-kounadis/generative-portfolio.git && git checkout -b gh-pages && git add -A && git commit -m 'Deploy production build' && git push origin gh-pages --force"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.1",
