@@ -352,12 +352,8 @@ a:hover {
   flex-wrap: wrap;
   display: flex;
   gap: 1rem;
+  align-items: flex-start;
   align-content: flex-start;
-}
-
-.media-col.side-by-side .shot-wrap {
-  flex: 0 0 calc(50% - 0.5rem);
-  min-width: 0;
 }
 
 .media-sub-col {
@@ -370,6 +366,7 @@ a:hover {
 
 .media-sub-col .shot-wrap {
   width: 100%;
+  height: auto;
 }
 
 /* ─────────────────────────────────────────────
