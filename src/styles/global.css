@@ -431,3 +431,77 @@ a:hover {
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+
+/* ─────────────────────────────────────────────
+   MOBILE — ≤ 768px
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* ── Typography ── */
+  :root {
+    --scale-h1: 1.5rem;
+    --scale-h2: 1.1rem;
+    --scale-body: 0.9rem;
+  }
+
+  .slide-intro h1 {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  /* ── Intro slide ── */
+  .slide-intro {
+    padding: 0 6%;
+    gap: 1.5rem;
+    justify-content: flex-end;
+    padding-bottom: 6rem;
+    min-height: 100svh;
+  }
+
+  /* ── TOC slide ── */
+  .slide-toc {
+    padding: 0 6%;
+    min-height: 100svh;
+  }
+
+  .toc-item {
+    width: 100%;
+  }
+
+  /* ── Section layout: stack info above media ── */
+  .section-wrap {
+    flex-direction: column;
+  }
+
+  .info-col {
+    flex: none;
+    width: 100%;
+    padding: 2.5rem 6% 1.5rem;
+  }
+
+  /* Sticky info-box becomes static on mobile */
+  .info-box {
+    position: static;
+    padding: 1.75rem;
+  }
+
+  .media-col {
+    padding: 1rem 6% 3rem;
+    gap: 1.25rem;
+  }
+
+  /* Side-by-side becomes single column on mobile */
+  .media-col.side-by-side {
+    flex-direction: column;
+  }
+
+  .media-sub-col {
+    width: 100%;
+  }
+
+  /* HDR placeholders stack to full width */
+  .shot-placeholder {
+    flex: none;
+    width: 100%;
+    aspect-ratio: 3/2;
+  }
+}
