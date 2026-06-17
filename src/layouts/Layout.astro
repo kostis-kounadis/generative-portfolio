@@ -1,0 +1,48 @@
+---
+import '../styles/global.css';
+import FloatingNav from '../components/FloatingNav.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Kostis Kounadis — Portfolio of AI Projects',
+  description = 'Portfolio showcasing functional and experimental projects, implemented using AI/LLMs, designed by Kostis Kounadis.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#164ea1" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <slot />
+    <FloatingNav />
+    <script>
+      import { gsap } from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+      gsap.registerPlugin(ScrollTrigger);
+
+      // ── Scroll-triggered fade-in for all .shot-wrap elements ──
+      // CSS position:sticky on .info-box handles pinning natively.
+      document.querySelectorAll('.shot-wrap').forEach((el) => {
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top 90%',
+          onEnter: () => el.classList.add('in-view'),
+        });
+      });
+    </script>
+  </body>
+</html>

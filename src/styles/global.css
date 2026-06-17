@@ -1,0 +1,423 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&family=IBM+Plex+Sans:wght@300;600&display=swap');
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────
+   DESIGN TOKENS
+───────────────────────────────────────────── */
+:root {
+  --blueprint-blue: #164ea1;
+  --blueprint-blue-mid: #2d65b9;
+  --blueprint-blue-light: #4f87da;
+  --silver: #C0C0C0;
+  --white: #ffffff;
+  --divider: rgba(255, 255, 255, 0.15);
+
+  --scale-body: 1rem;
+  --scale-h2: 1.4rem;
+  --scale-h1: 1.96rem;
+
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+}
+
+/* ─────────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: 0 !important;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: var(--scale-body);
+  line-height: 1.65;
+  color: var(--silver);
+  background-color: var(--blueprint-blue);
+
+  /* Blueprint grid — very subtle */
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.06) 0px,
+      rgba(255, 255, 255, 0.06) 1px,
+      transparent 1px,
+      transparent 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.06) 0px,
+      rgba(255, 255, 255, 0.06) 1px,
+      transparent 1px,
+      transparent 40px
+    );
+  background-size: 40px 40px;
+}
+
+/* ─────────────────────────────────────────────
+   TYPOGRAPHY
+───────────────────────────────────────────── */
+h1, h2, h3 {
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+h1 {
+  font-family: var(--font-sans);
+  font-size: var(--scale-h1);
+  color: var(--white);
+}
+
+h2 {
+  font-family: var(--font-mono);
+  font-size: var(--scale-h2);
+  color: var(--white);
+}
+
+p, li {
+  font-family: var(--font-sans);
+  font-size: var(--scale-body);
+  font-weight: 300;
+  color: var(--silver);
+  line-height: 1.65;
+}
+
+a {
+  font-family: var(--font-mono);
+  font-weight: 300;
+  color: var(--white);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+a:hover {
+  border-color: var(--white);
+  color: var(--white);
+}
+
+/* ─────────────────────────────────────────────
+   SLIDE 1 — INTRO
+───────────────────────────────────────────── */
+.slide-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 8%;
+  min-height: 100vh;
+  gap: 2rem;
+}
+
+.slide-intro h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  color: var(--white);
+  letter-spacing: -0.02em;
+}
+
+.slide-intro .meta-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0;
+}
+
+.slide-intro .meta-links a {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  border-bottom: none;
+  padding: 0 1.25rem;
+  transition: color 0.2s ease;
+}
+
+.slide-intro .meta-links > :first-child {
+  padding-left: 0;
+}
+
+.slide-intro .meta-links a:hover {
+  color: var(--white);
+  border-bottom: none;
+}
+
+.slide-intro .meta-links .separator {
+  color: rgba(255, 255, 255, 0.3);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  user-select: none;
+}
+
+.slide-intro .meta-links .label-bold {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0 1.25rem;
+}
+
+.slide-intro .meta-links .label-bold:first-child {
+  padding-left: 0;
+}
+
+/* ─────────────────────────────────────────────
+   SLIDE 2 — TABLE OF CONTENTS
+───────────────────────────────────────────── */
+.slide-toc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 8%;
+  min-height: 100vh;
+  gap: 0;
+}
+
+.toc-title {
+  font-family: var(--font-mono);
+  font-size: calc(0.75rem * 1.4);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.toc-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+  padding: calc(1.25rem * 1.4) 0;
+  border-top: 1px solid var(--divider);
+  text-decoration: none;
+  border-bottom: none;
+  transition: background 0.2s ease, padding-right 0.2s ease;
+  gap: 1rem;
+}
+
+.toc-item:last-child {
+  border-bottom: 1px solid var(--divider);
+}
+
+.toc-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.toc-item-left {
+  display: flex;
+  align-items: baseline;
+  gap: calc(1.5rem * 1.4);
+}
+
+.toc-num {
+  font-family: var(--font-mono);
+  font-size: calc(0.625rem * 1.4);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.35);
+  width: calc(2rem * 1.4);
+  flex-shrink: 0;
+}
+
+.toc-label {
+  font-family: var(--font-sans);
+  font-size: calc(1.25rem * 1.4);
+  font-weight: 300;
+  color: var(--white);
+}
+
+.toc-arrow {
+  font-family: var(--font-mono);
+  font-size: calc(1rem * 1.4);
+  color: rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.toc-item:hover .toc-arrow {
+  transform: translateX(4px);
+  color: var(--white);
+}
+
+/* ─────────────────────────────────────────────
+   SECTION DIVIDER — full-width edge-to-edge
+───────────────────────────────────────────── */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--divider);
+  border: none;
+  display: block;
+}
+
+/* ─────────────────────────────────────────────
+   SECTION WRAP — flex row, sticky info box
+───────────────────────────────────────────── */
+.section-wrap {
+  display: flex;
+  width: 100%;
+  align-items: stretch; /* info-col stretches to match media-col height */
+}
+
+/* Info column: 4/12 of viewport (1 col margin + 3 col box) */
+.info-col {
+  flex: 0 0 33.333%;
+  padding: 4rem 1rem 4rem calc(100vw / 12);
+}
+
+/* Info box: white card, sticky */
+.info-box {
+  position: sticky;
+  top: 4rem;
+  background: var(--white);
+  padding: 2.5rem;
+  height: fit-content;
+}
+
+.info-box h1,
+.info-box h2,
+.info-box a {
+  color: var(--blueprint-blue);
+}
+
+.info-box h1 {
+  font-size: var(--scale-h1);
+  margin-bottom: 0.5rem;
+}
+
+.info-box h2 {
+  font-size: var(--scale-h2);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.info-box p {
+  color: #444;
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.info-box .links {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-box .links a {
+  color: var(--blueprint-blue);
+  border-bottom: 1px solid rgba(22, 78, 161, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  transition: gap 0.2s ease, border-color 0.2s ease;
+}
+
+.info-box .links a:hover {
+  border-color: var(--blueprint-blue);
+  gap: 0.75rem;
+}
+
+.info-box .links a::before {
+  content: '→';
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────────
+   MEDIA COLUMN — right 8/12 of viewport
+───────────────────────────────────────────── */
+.media-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 4rem 3rem 4rem 2rem;
+  min-width: 0;
+}
+
+.media-col.side-by-side {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-content: flex-start;
+}
+
+.media-col.side-by-side .shot-wrap {
+  flex: 0 0 calc(50% - 0.5rem);
+  min-width: 0;
+}
+
+/* ─────────────────────────────────────────────
+   SHOT WRAPPERS — images with blueprint filter
+───────────────────────────────────────────── */
+.shot-wrap {
+  background: var(--blueprint-blue-mid);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.shot-wrap.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.shot-wrap img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: grayscale(1) contrast(1.25) brightness(0.9);
+  mix-blend-mode: screen;
+  transition: filter 0.4s ease;
+}
+
+.shot-wrap:hover img {
+  filter: grayscale(0) contrast(1) brightness(1);
+  mix-blend-mode: normal;
+}
+
+/* Portrait placeholder for HDR slide */
+.shot-placeholder {
+  background: rgba(45, 101, 185, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 calc(33.333% - 0.75rem);
+  aspect-ratio: 9/16;
+}
+
+.shot-placeholder span {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  padding: 1rem;
+}
+
+/* ─────────────────────────────────────────────
+   UTILITY
+───────────────────────────────────────────── */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

@@ -1,0 +1,205 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+
+  <!-- ══════════════════════════════════════════════
+       SLIDE 1 — INTRO
+  ══════════════════════════════════════════════ -->
+  <section id="intro" class="slide-intro" aria-label="Introduction">
+    <h1>Portfolio</h1>
+    <nav class="meta-links" aria-label="Personal links">
+      <span class="label-bold">AI Projects</span>
+      <span class="separator">|</span>
+      <a href="https://kostiskounadis.xyz" target="_blank" rel="noopener">Kostis Kounadis</a>
+      <span class="separator">|</span>
+      <a href="mailto:kostis.kounadis@gmail.com">kostis.kounadis@gmail.com</a>
+      <span class="separator">|</span>
+      <a href="https://kostiskounadis.xyz" target="_blank" rel="noopener">kostiskounadis.xyz</a>
+      <span class="separator">|</span>
+      <a href="https://github.com/kostis-kounadis" target="_blank" rel="noopener">GitHub</a>
+      <span class="separator">|</span>
+      <a href="https://www.instagram.com/inkanddestroy/" target="_blank" rel="noopener">Instagram</a>
+      <span class="separator">|</span>
+      <a href="https://www.linkedin.com/in/kostiskounadis/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SLIDE 2 — TABLE OF CONTENTS
+  ══════════════════════════════════════════════ -->
+  <section id="index" class="slide-toc" aria-label="Directory index">
+    <p class="toc-title">Directory // Index</p>
+    <a href="#portfolio-engine" class="toc-item">
+      <span class="toc-item-left">
+        <span class="toc-num">01</span>
+        <span class="toc-label">Portfolio</span>
+      </span>
+      <span class="toc-arrow">→</span>
+    </a>
+    <a href="#workflow-plugins" class="toc-item">
+      <span class="toc-item-left">
+        <span class="toc-num">02</span>
+        <span class="toc-label">Adobe AI Extensions</span>
+      </span>
+      <span class="toc-arrow">→</span>
+    </a>
+    <a href="#geospatial" class="toc-item">
+      <span class="toc-item-left">
+        <span class="toc-num">03</span>
+        <span class="toc-label">Ορειβατικό Ημερολόγιο</span>
+      </span>
+      <span class="toc-arrow">→</span>
+    </a>
+    <a href="#photography-automation" class="toc-item">
+      <span class="toc-item-left">
+        <span class="toc-num">04</span>
+        <span class="toc-label">CLI HDR Process</span>
+      </span>
+      <span class="toc-arrow">→</span>
+    </a>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SLIDE 3 — PORTFOLIO ENGINE
+  ══════════════════════════════════════════════ -->
+  <hr class="section-divider" />
+  <section id="portfolio-engine" class="section-wrap" aria-label="Portfolio">
+    <div class="info-col">
+      <div class="info-box">
+        <h1>Portfolio</h1>
+        <h2>kostiskounadis.xyz</h2>
+        <p>
+          An experimental, interactive, personal portfolio designed as a draggable "scattered desk" with various additional view settings and dynamic category management. The interface is intentionally ambiguous and invites exploration. Static site generation, GitHub versioning, and automatic deployment to Cloudflare.
+        </p>
+        <h2>Canvas Portfolio Template</h2>
+        <p>
+          An open-source template based on the portfolio above. Fully interactive, drag-and-drop setup without touching a single line of code via a local web app that lets you configure everything visually — site identity, typography, backgrounds, image effects, layout modes, modules, and mobile settings. Changes hot-reload into the portfolio preview instantly.
+        </p>
+        <div class="links" role="list">
+          <a href="https://kostiskounadis.xyz" target="_blank" rel="noopener" role="listitem">kostiskounadis.xyz</a>
+          <a href="https://github.com/kostis-kounadis/canvas-portfolio-website-template" target="_blank" rel="noopener" role="listitem">Template GitHub Repository</a>
+          <a href="https://kostis-kounadis.github.io/canvas-portfolio-website-template/" target="_blank" rel="noopener" role="listitem">Template Live Preview</a>
+          <a href="https://kostis-kounadis.github.io/canvas-portfolio-website-template/admin/" target="_blank" rel="noopener" role="listitem">Template Live CMS</a>
+        </div>
+      </div>
+    </div>
+    <div class="media-col">
+      <div class="shot-wrap">
+        <img src="/assets/canvas-portfolio/shot-01.png" alt="Canvas portfolio template full view" loading="lazy" decoding="async" />
+      </div>
+      <div class="shot-wrap">
+        <img src="/assets/canvas-portfolio/shot-02.png" alt="Canvas portfolio infinite scroll template" loading="lazy" decoding="async" />
+      </div>
+      <div class="shot-wrap">
+        <img src="/assets/canvas-portfolio/shot-03.png" alt="Canvas CMS admin — identity settings" loading="lazy" decoding="async" />
+      </div>
+      <div class="shot-wrap">
+        <img src="/assets/canvas-portfolio/shot-04.png" alt="Canvas CMS admin — module management" loading="lazy" decoding="async" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SLIDE 4 — WORKFLOW PLUGINS
+  ══════════════════════════════════════════════ -->
+  <hr class="section-divider" />
+  <section id="workflow-plugins" class="section-wrap" aria-label="Adobe AI Extensions">
+    <div class="info-col">
+      <div class="info-box">
+        <h1>Adobe AI Extensions</h1>
+        <h2>Aide for Adobe CC</h2>
+        <p>
+          CEP panels that live inside Adobe Illustrator and InDesign and act as your AI scripting assistant and script manager. Describe what you want in plain English — Aide generates the ExtendScript code, previews it, and lets you execute it with one click. Save your scripts and export them to share with others, load local scripts, star your favorite scripts, and easily run them. Works with local AI models (via Ollama), or cloud providers like Google Gemini, OpenAI, Anthropic, OpenRouter, and any OpenAI-compatible endpoint.
+        </p>
+        <div class="links" role="list">
+          <a href="https://github.com/kostis-kounadis/Aide-for-Illustrator" target="_blank" rel="noopener" role="listitem">Aide for Illustrator — GitHub</a>
+          <a href="https://github.com/kostis-kounadis/Aide-for-InDesign" target="_blank" rel="noopener" role="listitem">Aide for InDesign — GitHub</a>
+        </div>
+      </div>
+    </div>
+    <div class="media-col side-by-side">
+      <div class="shot-wrap">
+        <img src="/assets/aide-illustrator/shot-01.png" alt="Aide for Illustrator — main panel window" loading="lazy" decoding="async" />
+      </div>
+      <div class="shot-wrap">
+        <img src="/assets/aide-illustrator/shot-02.png" alt="Aide for Illustrator — scripts launcher full view" loading="lazy" decoding="async" />
+      </div>
+      <div class="shot-wrap">
+        <img src="/assets/aide-indesign/shot-01.png" alt="Aide for InDesign — panel screenshot 1" loading="lazy" decoding="async" />
+      </div>
+      <div class="shot-wrap">
+        <img src="/assets/aide-indesign/shot-02.png" alt="Aide for InDesign — panel screenshot 2" loading="lazy" decoding="async" />
+      </div>
+      <div class="shot-wrap">
+        <img src="/assets/aide-illustrator/shot-03.png" alt="Aide for Illustrator — advanced settings" loading="lazy" decoding="async" />
+      </div>
+      <div class="shot-wrap">
+        <img src="/assets/aide-indesign/shot-03.png" alt="Aide for InDesign — panel screenshot 3" loading="lazy" decoding="async" />
+      </div>
+      <div class="shot-wrap">
+        <img src="/assets/aide-illustrator/shot-04.png" alt="Aide for Illustrator — generation example" loading="lazy" decoding="async" />
+      </div>
+      <div class="shot-wrap">
+        <img src="/assets/aide-indesign/shot-04.png" alt="Aide for InDesign — panel screenshot 4" loading="lazy" decoding="async" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SLIDE 5 — MOUNT ATHENS
+  ══════════════════════════════════════════════ -->
+  <hr class="section-divider" />
+  <section id="geospatial" class="section-wrap" aria-label="Ορειβατικό Ημερολόγιο">
+    <div class="info-col">
+      <div class="info-box">
+        <h1>Ορειβατικό Ημερολόγιο</h1>
+        <h2>Auto-parsing Event Calendar</h2>
+        <p>
+          A minimalist, design-first calendar aggregating upcoming mountaineering events and excursions from major Athenian mountaineering clubs. Live on GitHub Pages, automatically updated every morning via GitHub Actions.
+        </p>
+        <div class="links" role="list">
+          <a href="https://github.com/kostis-kounadis/Mount-Athens" target="_blank" rel="noopener" role="listitem">GitHub Repository</a>
+          <a href="https://kostis-kounadis.github.io/Mount-Athens/" target="_blank" rel="noopener" role="listitem">Live Site</a>
+        </div>
+      </div>
+    </div>
+    <div class="media-col">
+      <div class="shot-wrap">
+        <img src="/assets/mount-athens/shot-01.png" alt="Mount Athens — live site screenshot" loading="lazy" decoding="async" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SLIDE 6 — HDR ASSEMBLER
+  ══════════════════════════════════════════════ -->
+  <hr class="section-divider" />
+  <section id="photography-automation" class="section-wrap" aria-label="CLI HDR Process">
+    <div class="info-col">
+      <div class="info-box">
+        <h1>CLI HDR Process</h1>
+        <h2>HDR Image Assembler with Instagram Compatibility</h2>
+        <p>
+          A Python-based CLI utility for generating ISO-compliant UltraHDR JPEGs that trigger the HDR display feature in the Instagram app by merging an SDR base and HDR top layer exported via Adobe Camera Raw.
+        </p>
+        <div class="links" role="list">
+          <a href="https://github.com/kostis-kounadis/instagram-hdr-assembler" target="_blank" rel="noopener" role="listitem">GitHub Repository</a>
+        </div>
+      </div>
+    </div>
+    <div class="media-col side-by-side">
+      <div class="shot-placeholder">
+        <span>SAMPLE<br/>PORTRAIT<br/>INPUT A</span>
+      </div>
+      <div class="shot-placeholder">
+        <span>SAMPLE<br/>PORTRAIT<br/>INPUT B</span>
+      </div>
+      <div class="shot-placeholder">
+        <span>ULTRAHDR<br/>OUTPUT</span>
+      </div>
+    </div>
+  </section>
+
+</Layout>

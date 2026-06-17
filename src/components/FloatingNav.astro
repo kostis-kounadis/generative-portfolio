@@ -1,0 +1,242 @@
+---
+// FloatingNav.astro
+// Icons: Lucide (https://lucide.dev) — MIT license
+// stroke-width 2.5 for wider/bolder arrows
+
+const projects = [
+  { id: 'portfolio-engine',       label: 'Portfolio' },
+  { id: 'workflow-plugins',       label: 'Adobe AI Extensions' },
+  { id: 'geospatial',             label: 'Ορειβατικό Ημερολόγιο' },
+  { id: 'photography-automation', label: 'CLI HDR Process' },
+];
+---
+
+<nav
+  id="floating-nav"
+  class="floating-nav"
+  aria-label="Project navigation"
+  role="navigation"
+>
+  <!-- ① Go to top (Intro slide) -->
+  <button class="nav-btn" id="nav-top" aria-label="Go to top">
+    <span class="nav-zero" aria-hidden="true">0</span>
+  </button>
+
+  <!-- ② Arrow-up with top line — Go to Contents -->
+  <button class="nav-btn" id="nav-contents" aria-label="Go to table of contents">
+    <!-- Lucide: arrow-up-to-line -->
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 20V8"/>
+      <polyline points="6 14 12 8 18 14"/>
+      <line x1="4" y1="4" x2="20" y2="4"/>
+    </svg>
+  </button>
+
+  <!-- ③ Arrow-up — Previous project (greyed-out on first) -->
+  <button class="nav-btn" id="nav-prev" aria-label="Previous project">
+    <!-- Lucide: arrow-up -->
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5"/>
+      <polyline points="6 11 12 5 18 11"/>
+    </svg>
+  </button>
+
+  <!-- ④ Arrow-down — Next project (greyed-out on last) -->
+  <button class="nav-btn" id="nav-next" aria-label="Next project">
+    <!-- Lucide: arrow-down -->
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 5v14"/>
+      <polyline points="18 13 12 19 6 13"/>
+    </svg>
+  </button>
+</nav>
+
+<style>
+  /* ── Floating nav container ─────────────────
+     Positioned in the 1-column left gutter,
+     horizontally centered within it,
+     top-aligned with the sticky info-box (top: 4rem).
+  ──────────────────────────────────────────── */
+  .floating-nav {
+    position: fixed;
+    /*
+      The info-col has padding-left: calc(100vw / 12),
+      creating a 1-column (8.333vw) gutter on the left.
+      Center the nav stack within that gutter:
+        midpoint = calc(100vw / 24)
+        translateX(-50%) centers the 2.75rem-wide stack on that midpoint
+    */
+    left: calc(100vw / 24);
+    transform: translateX(-50%);
+    top: 4rem; /* matches info-box sticky top */
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    z-index: 100;
+
+    /* Hidden until a project section is active */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+
+  .floating-nav.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* ── Individual buttons ─────────────────────── */
+  .nav-btn {
+    border-radius: 50% !important; /* Override global border-radius: 0 */
+    width: 2.75rem;
+    height: 2.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    background: rgba(22, 78, 161, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease,
+      opacity 0.2s ease,
+      transform 0.15s ease;
+  }
+
+  .nav-btn:hover:not(.is-disabled) {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(255, 255, 255, 0.9);
+    color: #164ea1;
+    transform: scale(1.08);
+  }
+
+  .nav-btn:active:not(.is-disabled) {
+    transform: scale(0.96);
+  }
+
+  /* Greyed-out state — always rendered, just disabled */
+  .nav-btn.is-disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  /* "0" label */
+  .nav-zero {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 300;
+    font-size: 0.9rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  /* SVG icon sizing */
+  .nav-btn svg {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+</style>
+
+<script>
+  const PROJECT_IDS = [
+    'portfolio-engine',
+    'workflow-plugins',
+    'geospatial',
+    'photography-automation',
+  ];
+
+  const nav     = document.getElementById('floating-nav') as HTMLElement;
+  const prevBtn = document.getElementById('nav-prev')     as HTMLButtonElement;
+  const nextBtn = document.getElementById('nav-next')     as HTMLButtonElement;
+  const topBtn  = document.getElementById('nav-top')      as HTMLButtonElement;
+  const contBtn = document.getElementById('nav-contents') as HTMLButtonElement;
+
+  let currentIndex = -1;
+
+  /* ── Smooth scroll helpers ──────────────────── */
+  topBtn.addEventListener('click', () => {
+    document.getElementById('intro')?.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  contBtn.addEventListener('click', () => {
+    document.getElementById('index')?.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      document.getElementById(PROJECT_IDS[currentIndex - 1])
+        ?.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (currentIndex < PROJECT_IDS.length - 1) {
+      document.getElementById(PROJECT_IDS[currentIndex + 1])
+        ?.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  /* ── Active-section detection ───────────────── */
+  function getActiveProjectIndex(): number {
+    const viewMid = window.scrollY + window.innerHeight * 0.5;
+    for (let i = PROJECT_IDS.length - 1; i >= 0; i--) {
+      const el = document.getElementById(PROJECT_IDS[i]);
+      if (el && el.getBoundingClientRect().top + window.scrollY <= viewMid) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  function isAboveProjects(): boolean {
+    const firstProject = document.getElementById(PROJECT_IDS[0]);
+    if (!firstProject) return true;
+    const viewMid = window.scrollY + window.innerHeight * 0.5;
+    return viewMid < firstProject.getBoundingClientRect().top + window.scrollY;
+  }
+
+  function updateNav(): void {
+    if (isAboveProjects()) {
+      nav.classList.remove('is-visible');
+      currentIndex = -1;
+      return;
+    }
+
+    const idx = getActiveProjectIndex();
+    if (idx < 0) {
+      nav.classList.remove('is-visible');
+      currentIndex = -1;
+      return;
+    }
+
+    currentIndex = idx;
+    nav.classList.add('is-visible');
+
+    // Prev — greyed out on first project
+    if (idx === 0) {
+      prevBtn.classList.add('is-disabled');
+    } else {
+      prevBtn.classList.remove('is-disabled');
+    }
+
+    // Next — greyed out on last project
+    if (idx === PROJECT_IDS.length - 1) {
+      nextBtn.classList.add('is-disabled');
+    } else {
+      nextBtn.classList.remove('is-disabled');
+    }
+  }
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+</script>
