@@ -26,4 +26,8 @@ pnpm-debug.log*
 # local plans and configs
 PLAN.md
 COPY.md
+PROMPT.md
+
+# IDEs and local configurations
+.vscode/
 
