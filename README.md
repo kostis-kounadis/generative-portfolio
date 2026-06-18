@@ -1,6 +1,6 @@
 # Generative Portfolio
 
-A single-page, design-first portfolio website showcasing generative design, AI assistant extensions, mapping projects, and photography utilities.
+A single-page, design-first portfolio website showcasing projects and use cases developed with the assistance of AI/LLMs.
 
 ## Tech Stack
 
